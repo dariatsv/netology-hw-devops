@@ -1,0 +1,55 @@
+commit 056c6f24b7fd1de3b42b38a491ba7081b47dc14a
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sat Feb 17 13:30:18 2024 +0300
+
+    Moved and deleted
+
+commit c4cb05c40a78698da476a35b307e46e7603ee344
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sat Feb 17 13:29:32 2024 +0300
+
+    Prepare to delete and move
+
+commit c2c9f5fd9cfe347f890847aa4a416c0ea2879344
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sat Feb 17 13:28:39 2024 +0300
+
+    Added gitignore
+
+commit 5ddced3b56e7cca14b34fb7dfab717e0c57a55c3
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sat Feb 17 13:21:53 2024 +0300
+
+    First commit
+    
+    # task1 - Системы контроля версий
+
+commit f9bfb473c0e307e7abcbbb30d6c158499c6ddb83
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sun Feb 11 16:45:56 2024 +0300
+
+    Домашняя работа - "Уязвимости и атаки на информационные системы" - Цветкова Дарья
+
+commit dca862b07d1198c1ae35d33ad870ac1372dac7d2
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sun Feb 11 16:35:32 2024 +0300
+
+    Домашняя работа - "Защита сети" - Цветкова Дарья
+
+commit 3f0a3aa40a45663f2b484feb938210f3b73dde00
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sun Feb 11 16:03:11 2024 +0300
+
+    Домашняя работа - "Защита хоста" - Цветкова Дарья
+
+commit 16ac26b12a5d873bc43112d04456afad1f311a57
+Author: dariatsv <dasha21a@icloud.com>
+Date:   Sun Feb 11 15:33:28 2024 +0300
+
+    Домашняя работа - "Индексы" - Цветкова Дарья
+
+commit b2364b5719b366fef223e2a9bc6b02c5638e0700
+Author: dariatsv <120659899+dariatsv@users.noreply.github.com>
+Date:   Sun Feb 11 15:22:26 2024 +0300
+
+    Initial commit

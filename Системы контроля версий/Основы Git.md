@@ -95,6 +95,31 @@ To https://github.com/dariatsv/netology-hw-devops.git
 1. Отправьте изменения в репозиторий и посмотрите, как изменится схема на странице https://github.com/YOUR_ACCOUNT/devops-netology/network
 и как изменится вывод команды `git log`.
 
+ Ответ:
+```git
+
+daracvetkova@192-168-1-120 netology-hw-devops % git -c checkout c4cb05c40a78698da476a35b307e46e7603ee34
+daracvetkova@192-168-1-120 netology-hw-devops % git switch -c fix
+Переключились на новую ветку «fix»
+daracvetkova@192-168-1-120 netology-hw-devops % git push -u origin fix
+Всего 0 (изменений 0), повторно использовано 0 (изменений 0), повторно использовано пакетов 0
+remote:
+remote: Create a pull request for 'fix' on GitHub by visiting:
+remote:      https://github.com/dariatsv/netology-hw-devops/pull/new/fix
+remote:
+To https://github.com/dariatsv/netology-hw-devops.git
+ * [new branch]      fix -> fix
+branch 'fix' set up to track 'origin/fix'.
+
+daracvetkova@192-168-1-120 netology-hw-devops % git log
+commit 25145f9e2e9b9274fa233f073541bf28ec5733ba (HEAD -> fix, origin/fix)
+Author: Daria <dasha21a@icloud.com>
+Date:   Sun Mar 3 18:47:55 2024 +0300
+
+    new line
+
+```
+
 ## Задание 4. Упрощаем себе жизнь
 
 Попробуем поработь с Git при помощи визуального редактора.
@@ -114,27 +139,15 @@ To https://github.com/dariatsv/netology-hw-devops.git
 
 *В качестве результата работы по всем заданиям приложите ссылки на ваши репозитории в GitHub, GitLab и Bitbucket*.
 
+Ответ:
+Коммит с IDEA:
+![тест](img/2.png)
 ----
 
 ### Правила приёма домашнего задания
 
-В личном кабинете отправлены ссылки на ваши репозитории.
+Ссылки на репозитории:
+Github: https://github.com/dariatsv/netology-hw-devops
 
-
-### Критерии оценки
-
-Зачёт:
-
-* выполнены все задания;
-* ответы даны в развёрнутой форме;
-* приложены соответствующие скриншоты и файлы проекта;
-* в выполненных заданиях нет противоречий и нарушения логики.
-
-На доработку:
-
-* задание выполнено частично или не выполнено вообще;
-* в логике выполнения заданий есть противоречия и существенные недостатки.
-
-Обязательными являются задачи без звёздочки. Их выполнение необходимо для получения зачёта и диплома о профессиональной переподготовке.
-
-Задачи со звёздочкой (*) являются дополнительными или задачами повышенной сложности. Они необязательные, но их выполнение поможет лучше разобраться в теме.
+Gitlab:
+https://gitlab.com/Darya21a5a/devops-netology

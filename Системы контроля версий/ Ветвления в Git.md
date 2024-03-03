@@ -124,8 +124,6 @@ echo "====="
 Если всё было сделано правильно, то на странице `network` в GitHub, находящейся по адресу
 `https://github.com/ВАШ_ЛОГИН/ВАШ_РЕПОЗИТОРИЙ/network`, будет примерно такая схема:
 
-![Созданы обе ветки](img/01.png)
-
 Ответ:
 
 ![Before merge and rebase](img/3.png)
@@ -146,10 +144,6 @@ Counting objects: 100% (1/1), done.
 Writing objects: 100% (1/1), 223 bytes | 223.00 KiB/s, done.
 Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
 ```
-
-В результате получаем такую схему:
-
-![Первый мерж](img/02.png)
 
 Ответ:
 

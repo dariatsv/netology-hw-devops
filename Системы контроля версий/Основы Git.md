@@ -147,6 +147,7 @@ Date:   Sun Mar 3 18:47:55 2024 +0300
 ### Правила приёма домашнего задания
 
 Ссылки на репозитории:
+
 Github: https://github.com/dariatsv/netology-hw-devops
 
 Gitlab:

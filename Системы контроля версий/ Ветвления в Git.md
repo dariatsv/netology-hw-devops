@@ -126,6 +126,10 @@ echo "====="
 
 ![Созданы обе ветки](img/01.png)
 
+Ответ:
+
+![Before merge and rebase](img/3.png)
+
 #### Merge
 
 Сливаем ветку `git-merge` в main и отправляем изменения в репозиторий, должно получиться без конфликтов:
@@ -146,6 +150,10 @@ Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
 В результате получаем такую схему:
 
 ![Первый мерж](img/02.png)
+
+Ответ:
+
+![After merge](img/4.png)
 
 #### Rebase
 
@@ -264,7 +272,13 @@ Fast-forward
  1 file changed, 1 insertion(+), 2 deletions(-)
 ```
 
+Ответ:
+
+![After rebase](img/5.png)
+
 *В качестве результата работы по всем заданиям приложите ссылку на .md-файл в вашем репозитории.*
+
+Ответ ссылка на репозиторий: https://github.com/dariatsv/netology-hw-devops
 
 ----
 

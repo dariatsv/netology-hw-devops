@@ -1,0 +1,49 @@
+
+#nginx
+- name: Deploy Nginx
+  hosts: webservers
+  become: yes
+  roles:
+    - nginx
+
+#prometheus
+- name: Deploy Prometheus
+  hosts: prometheus
+  become: yes
+  roles:
+    - prometheus
+
+#node-exporter
+- name: Deploy Node-exporter
+  hosts: all
+  become: yes
+  roles:
+    - node_exporter
+
+#grafana
+- name: Deploy Grafana
+  hosts: grafana
+  become: yes
+  roles:
+    - grafana
+
+#elasticsearch
+- name: Deploy Elasticsearch
+  hosts: elasticsearch
+  become: yes
+  roles:
+    - elasticsearch
+
+#kibana
+- name: Deploy Kibana
+  hosts: kibana
+  become: yes
+  roles:
+    - kibana
+
+#filebeat
+- name: Deploy Filebeat
+  hosts: filebeat
+  become: yes
+  roles:
+    - filebeat

@@ -1,0 +1,59 @@
+- name: Download filebeat
+  apt:
+      deb: "https://mirror.yandex.ru/mirrors/elastic/7/pool/main/f/filebeat/filebeat-7.17.9-amd64.deb"
+      state: present
+
+- name: Install filebeat
+  systemd:
+    name: filebeat
+    enabled: yes
+    state: started
+    daemon_reload: true
+
+- name: Grant on log nginx files
+  ansible.builtin.file:
+    path: "{{ item }}"                    
+    mode: '0644'                      
+    state: file
+  loop:
+    - /var/log/nginx/access.log
+    - /var/log/nginx/error.log  
+
+- name: Grant on log prometheus files
+  ansible.builtin.file:
+    path: "{{ item }}"                    
+    mode: '0644'                      
+    state: file
+  loop:
+    - /var/log/prometheus/prometheus.log 
+
+- name: Grant on log elastic files
+  ansible.builtin.file:
+    path: "{{ item }}"                    
+    mode: '0644'                      
+    state: file
+  loop:
+    - /var/log/elasticsearch/elasticsearch.log
+
+- name: Grant on log kibana files
+  ansible.builtin.file:
+    path: "{{ item }}"                    
+    mode: '0644'                      
+    state: file
+  loop:
+    - /var/log/kibana/kibana.log
+
+- name: Grant on log grafana files
+  ansible.builtin.file:
+    path: "{{ item }}"                    
+    mode: '0644'                      
+    state: file
+  loop:
+    - /var/log/grafana/grafana.log
+
+- name: Restart filebeat
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+  notify:
+    - restart filebeat

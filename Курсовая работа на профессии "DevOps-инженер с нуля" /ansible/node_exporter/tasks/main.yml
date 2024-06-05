@@ -1,0 +1,8 @@
+---
+- name: Install Node Exporter
+  apt:
+    name: prometheus-node-exporter
+    state: latest
+    update_cache: yes
+  notify: 
+    - restarted Node Exporter

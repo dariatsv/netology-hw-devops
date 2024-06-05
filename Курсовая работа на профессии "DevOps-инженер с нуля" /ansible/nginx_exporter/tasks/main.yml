@@ -1,0 +1,29 @@
+---
+- name: Create user Nginx Log Exporter
+  user:
+    name: prometheus
+    system: yes
+    shell: /usr/sbin/nologin
+    createhome: no
+    
+- name: Download Nginx Log Exporter
+  get_url:
+    url: "https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v1.11.0/prometheus-nginxlog-exporter_1.11.0_linux_amd64.tar.gz"
+    dest: "/tmp/prometheus_nginxlog_exporter.tar.gz"
+
+- name: Create dir Nginx Log Exporter
+  file:
+    path: "/opt/prometheus_nginxlog_exporter"
+    state: directory
+
+- name: Unpack Nginx Log Exporter
+  unarchive:
+    src: "/tmp/prometheus_nginxlog_exporter.tar.gz"
+    dest: "/opt/prometheus_nginxlog_exporter"
+    remote_src: yes
+
+- name: Copy
+  template:
+    src: prometheus_nginxlog_exporter.service.j2
+    dest: "/etc/systemd/system/prometheus_nginxlog_exporter.service"
+  notify: Start prometheus_nginxlog_exporter

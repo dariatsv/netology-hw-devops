@@ -107,7 +107,33 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
     ```bash
     terraform apply
     ```
+    1. Созданные виртуальные машины
+    ![](img/virtual_machines.png)
+    2. Созданные диски
+    ![](img/disks.png)
+    3. Созданная сеть
+    ![](img/vpc.png)
+    4. Созданные подсети
+    ![](img/subnets.png)
+    5. Созданная группа бекенда
+    ![](img/backend-group.png)
+    6. Созданная целевая группа
+    ![](img/target_group.png)
+    7. Созданный роут
+    ![](img/http_router.png)
+    8. Созданный балансировщик
+    ![](img/alb.png)
+    9. Созданные группы безопасности
+    ![](img/security_groups.png)
+   
+
 2. Применяем конфигурацию ansible
     ```bash
     ansible-playbook common-playbook.yaml -i inventory.ini
     ```
+    1. Кибана
+       ![](img/kibana.png)
+    2. Grafana
+       ![](img/prometheus.png)
+    3. Nginx
+       ![](img/nginx.png)

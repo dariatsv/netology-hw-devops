@@ -3,12 +3,7 @@ resource "local_file" "ansible-inventory" {
 
     [all:vars]
     ansible_user=dasha21a
-    ansible_ssh_private_key_file=/Users/daracvetkova/.ssh/id_rsa.pub
-
-    [privilege_escalation]
-    become = True
-    become_user = root
-    become_method = sudo
+    ansible_ssh_private_key_file=/Users/daracvetkova/.ssh/id_rsa
 
     [bastion]
     bastion ansible_host=${yandex_compute_instance.vm-bastion.network_interface.0.nat_ip_address}

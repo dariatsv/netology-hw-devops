@@ -14,5 +14,8 @@
   ansible.builtin.template:
     src: index.html.j2
     dest: /var/www/html/index.nginx-debian.html
-  notify:
-    - Reload nginx
+
+- name: Reload nginx
+  ansible.builtin.systemd:
+    name: nginx
+    state: reloaded

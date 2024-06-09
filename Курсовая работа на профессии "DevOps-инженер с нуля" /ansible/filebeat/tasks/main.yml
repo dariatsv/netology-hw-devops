@@ -12,41 +12,41 @@
 
 - name: Grant on log nginx files
   ansible.builtin.file:
-    path: "{{ item }}"                    
-    mode: '0644'                      
+    path: "{{ item }}"
+    mode: '0644'
     state: file
   loop:
     - /var/log/nginx/access.log
-    - /var/log/nginx/error.log  
+    - /var/log/nginx/error.log
 
 - name: Grant on log prometheus files
   ansible.builtin.file:
-    path: "{{ item }}"                    
-    mode: '0644'                      
+    path: "{{ item }}"
+    mode: '0644'
     state: file
   loop:
-    - /var/log/prometheus/prometheus.log 
+    - /var/log/prometheus/prometheus.log
 
 - name: Grant on log elastic files
   ansible.builtin.file:
-    path: "{{ item }}"                    
-    mode: '0644'                      
+    path: "{{ item }}"
+    mode: '0644'
     state: file
   loop:
     - /var/log/elasticsearch/elasticsearch.log
 
 - name: Grant on log kibana files
   ansible.builtin.file:
-    path: "{{ item }}"                    
-    mode: '0644'                      
+    path: "{{ item }}"
+    mode: '0644'
     state: file
   loop:
     - /var/log/kibana/kibana.log
 
 - name: Grant on log grafana files
   ansible.builtin.file:
-    path: "{{ item }}"                    
-    mode: '0644'                      
+    path: "{{ item }}"
+    mode: '0644'
     state: file
   loop:
     - /var/log/grafana/grafana.log
@@ -55,5 +55,8 @@
   template:
     src: filebeat.yml.j2
     dest: /etc/filebeat/filebeat.yml
-  notify:
-    - restart filebeat
+
+- name: Restart filebeat
+  systemd:
+    name: filebeat
+    state: restarted

@@ -26,4 +26,10 @@
   template:
     src: prometheus_nginxlog_exporter.service.j2
     dest: "/etc/systemd/system/prometheus_nginxlog_exporter.service"
-  notify: Start prometheus_nginxlog_exporter
+
+- name: restarted Node Exporter
+  systemd:
+    name: prometheus-node-exporter
+    state: restarted
+    enabled: yes
+    daemon_reload: yes

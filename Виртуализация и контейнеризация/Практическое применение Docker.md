@@ -216,16 +216,16 @@ include:
 ```log
 MYSQL_ROOT_PASSWORD=myrootpass
 MYSQL_DATABASE=task3
-MYSQL_USER=myusernetology
-MYSQL_PASSWORD=myuserpass
+MYSQL_USER=kek
+MYSQL_PASSWORD=kekpass
 MYSQL_TABLE=mytable
 ```
 
 Файл с db переменными:
 ```log
 DB_HOST=db
-DB_USER=myusernetology
-DB_PASSWORD=myuserpass
+DB_USER=kek
+DB_PASSWORD=kekpass
 DB_NAME=task3
 DB_TABLE=mytable
 ```
@@ -257,7 +257,7 @@ CONTAINER ID   IMAGE                        COMMAND                  CREATED    
 d7bdb16861d8   nginx:1.21.1                 "/docker-entrypoint.…"   15 minutes ago   Up 15 minutes                              shvirtd-example-python-ingress-proxy-1
 
 docker exec -it db_mysql sh
-sh-5.1# mysql -umyusernetology -pmyuserpass
+sh-5.1# mysql -ukek -pkekpass
 mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 31
@@ -344,6 +344,80 @@ Client:
 
 ```
 3. Напишите bash-скрипт, который скачает ваш fork-репозиторий в каталог /opt и запустит проект целиком.
+
+Скрипт:
+```log
+#!/bin/bash
+
+git clone https://github.com/netology-code/shvirtd-example-python
+
+cd shvirtd-example-python
+
+cat << EOF > .dockerignore
+/haproxy
+/nginx
+.gitignore
+compose.yaml
+LICENCE
+proxy.yaml
+schema.pdf
+README.md
+.dockerignore
+EOF
+
+cat << EOF > .dockerignore
+
+EOF
+
+cat << EOF > .env
+MYSQL_ROOT_PASSWORD="kekpass"
+
+MYSQL_DATABASE="virtd"
+MYSQL_USER="kek"
+MYSQL_PASSWORD="kekpass"
+EOF
+
+cat << EOF > Dockerfile
+FROM python:3.9-slim
+WORKDIR /app
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
+CMD [ "python", "main.py"]
+EOF
+
+cat << EOF > compose.yaml
+version: "3"
+include:
+  - proxy.yaml
+services:
+  db:
+    image: mysql:8
+    restart: always
+    networks:
+      backend:
+        ipv4_address: 172.20.0.10
+    env_file:
+      - .env
+    volumes:
+      - ./data:/var/lib/mysql
+
+  web:
+    depends_on: ["db"]
+    build: .
+    restart: always
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
+    environment:
+      - DB_HOST=172.20.0.10
+      - DB_USER=kek
+      - DB_PASSWORD=kekpass
+      - DB_NAME=virtd
+EOF
+
+docker compose up -d
+
+```
 ```log
 dasha21a@compute-vm-2-2-20-hdd-1723410812482:~/shvirtd-example-python$ sudo sh run.sh
 [+] Running 24/3
@@ -399,7 +473,7 @@ ad5f8c9d433f   nginx:1.21.1                 "/docker-entrypoint.…"   56 second
 6. В качестве ответа повторите  sql-запрос и приложите скриншот с данного сервера, bash-скрипт и ссылку на fork-репозиторий.
 
 ```log
-sh-5.1# mysql -uapp -pQwErTy1234
+sh-5.1# mysql -ukek -pkekpass
 mysql: [Warning] Using a password on the command line interface can be insecure.
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 11

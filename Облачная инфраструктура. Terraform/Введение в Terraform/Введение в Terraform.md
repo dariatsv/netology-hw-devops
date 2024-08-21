@@ -122,7 +122,8 @@ Destroy complete! Resources: 3 destroyed.
 }
 ```
 9. Объясните, почему при этом не был удалён docker-образ **nginx:latest**. Ответ **ОБЯЗАТЕЛЬНО НАЙДИТЕ В ПРЕДОСТАВЛЕННОМ КОДЕ**, а затем **ОБЯЗАТЕЛЬНО ПОДКРЕПИТЕ** строчкой из документации [**terraform провайдера docker**](https://docs.comcloud.xyz/providers/kreuzwerker/docker/latest/docs).  (ищите в классификаторе resource docker_image )
-keep_locally параметр указывает Terraform не удалять локальную копию образа после успешного применения конфигурации. 
+
+10. keep_locally параметр указывает Terraform не удалять локальную копию образа после успешного применения конфигурации. 
 
 Argument Reference:
 

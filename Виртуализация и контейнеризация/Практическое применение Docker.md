@@ -28,8 +28,10 @@ See 'snap info docker' for additional versions.
 
 ---
 
+
 ## Задача 1
 1. Сделайте в своем github пространстве fork репозитория ```https://github.com/netology-code/shvirtd-example-python/blob/main/README.md```.
+   [FORK!!!!!!!!!!!](https://github.com/dariatsv/shvirtd-example-python)
 2. Создайте файл с именем ```Dockerfile.python``` для сборки данного проекта(для 3 задания изучите https://docs.docker.com/compose/compose-file/build/ ). Используйте базовый образ ```python:3.9-slim```.
 Обязательно используйте конструкцию ```COPY . .``` в Dockerfile. Не забудьте исключить ненужные в имадже файлы с помощью dockerignore. Протестируйте корректность сборки.
 3. (Необязательная часть, *) Изучите инструкцию в проекте и запустите web-приложение без использования docker в venv. (Mysql БД можно запустить в docker run).
@@ -187,8 +189,7 @@ services:
       - db
 
     env_file:
-      - web.env
-
+      - .env
 
   db:
     image: mysql:8
@@ -203,7 +204,7 @@ services:
       - ingress-proxy
 
     env_file:
-      - db.env
+      - .env
 
 
 include:
@@ -212,22 +213,12 @@ include:
 
 ```
 
-Файл с web переменными:
+Файл переменными:
 ```log
-MYSQL_ROOT_PASSWORD=myrootpass
-MYSQL_DATABASE=task3
-MYSQL_USER=kek
-MYSQL_PASSWORD=kekpass
-MYSQL_TABLE=mytable
-```
-
-Файл с db переменными:
-```log
-DB_HOST=db
-DB_USER=kek
-DB_PASSWORD=kekpass
-DB_NAME=task3
-DB_TABLE=mytable
+MYSQL_ROOT_PASSWORD="YtReWq4321"
+MYSQL_DATABASE="virtd"
+MYSQL_USER="app"
+MYSQL_PASSWORD="QwErTy1234"
 ```
 
 Запуск файла:
@@ -243,18 +234,18 @@ d7bdb16861d8   nginx:1.21.1                 "/docker-entrypoint.…"   49 second
 
 curl:
 ```log
-curl -L http://localhost:8080
-TIME: 2024-08-11 21:01:04, IP: None%
+curl -L http://localhost:8090
+TIME: 2024-08-26 23:08:45, IP: 127.0.0.1:8090
 ```
 
 Выполнение команд внутри контейнера mysql:
 ```log
 docker ps
-CONTAINER ID   IMAGE                        COMMAND                  CREATED          STATUS          PORTS                      NAMES
-2b217922cb1d   shvirtd-example-python-web   "python main.py"         15 minutes ago   Up 14 minutes                              web_python
-868ba177a766   mysql:8                      "docker-entrypoint.s…"   15 minutes ago   Up 15 minutes   3306/tcp, 33060/tcp        db_mysql
-8a1cd38ae860   haproxy:2.4                  "docker-entrypoint.s…"   15 minutes ago   Up 15 minutes   127.0.0.1:8080->8080/tcp   shvirtd-example-python-reverse-proxy-1
-d7bdb16861d8   nginx:1.21.1                 "/docker-entrypoint.…"   15 minutes ago   Up 15 minutes                              shvirtd-example-python-ingress-proxy-1
+CONTAINER ID   IMAGE                        COMMAND                  CREATED         STATUS         PORTS                      NAMES
+06b298a8043b   shvirtd-example-python-web   "python main.py"         7 minutes ago   Up 7 minutes                              shvirtd-example-python-web-1
+6aaf9269f16c   nginx:1.21.1                 "/docker-entrypoint.…"   7 minutes ago   Up 7 minutes                              shvirtd-example-python-ingress-proxy-1
+7d9d4a993563   haproxy:2.4                  "docker-entrypoint.s…"   7 minutes ago   Up 7 minutes   127.0.0.1:8080->8080/tcp   shvirtd-example-python-reverse-proxy-1
+1a130414d494   mysql:8                      "docker-entrypoint.s…"   7 minutes ago   Up 7 minutes   3306/tcp, 33060/tcp        shvirtd-example-python-db-1
 
 docker exec -it db_mysql sh
 sh-5.1# mysql -ukek -pkekpass
@@ -277,30 +268,32 @@ mysql> show databases;
 +--------------------+
 | information_schema |
 | performance_schema |
-| task3              |
+| virtd              |
 +--------------------+
 3 rows in set (0.01 sec)
 
-mysql> use task3;
+mysql> use virtd;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
 mysql> show tables;
 +-----------------+
-| Tables_in_task3 |
+| Tables_in_virtd |
 +-----------------+
 | requests        |
 +-----------------+
 1 row in set (0.00 sec)
 
 mysql> SELECT * from requests LIMIT 10;
-+----+---------------------+------------+
-| id | request_date        | request_ip |
-+----+---------------------+------------+
-|  1 | 2024-08-11 20:58:46 | NULL       |
-|  2 | 2024-08-11 21:01:04 | NULL       |
-+----+---------------------+------------+
++----+---------------------+----------------+
+| id | request_date        | request_ip     |
++----+---------------------+----------------+
+|  1 | 2024-08-26 23:10:10 | 127.0.0.1       |
+|  2 | 2024-08-26 21:11:04 | 127.0.0.1       |
+|  3 | 2024-08-26 21:11:45 | 127.0.0.1       |
+|  4 | 2024-08-26 21:12:10 | 127.0.0.1       |
++----+---------------------+----------------+
 2 rows in set (0.00 sec)
 
 mysql>
@@ -309,12 +302,12 @@ mysql>
 
 Остановить docker-compose:
 ```log
-docker compose down
-[+] Running 5/4
- ✔ Container web_python                              Removed                                                                                                                                                                          0.1s
- ✔ Container db_mysql                                Removed                                                                                                                                                                          1.4s
- ✔ Container shvirtd-example-python-reverse-proxy-1  Removed                                                                                                                                                                          1.2s
- ✔ Container shvirtd-example-python-ingress-proxy-1  Removed                                                                                                                                                                          0.1s
+docker-compose down
+[+] Running 5/5
+ ✔ Container shvirtd-example-python-reverse-proxy-1  Removed                                                                                                                                                                       0.3s 
+ ✔ Container shvirtd-example-python-ingress-proxy-1  Removed                                                                                                                                                                       0.1s 
+ ✔ Container shvirtd-example-python-web-1            Removed                                                                                                                                                                       0.3s 
+ ✔ Container shvirtd-example-python-db-1             Removed                                                                                                                                                                       1.1s 
  ✔ Network shvirtd-example-python_backend            Removed
 ```
 
@@ -348,74 +341,9 @@ Client:
 Скрипт:
 ```log
 #!/bin/bash
-
-git clone https://github.com/netology-code/shvirtd-example-python
-
-cd shvirtd-example-python
-
-cat << EOF > .dockerignore
-/haproxy
-/nginx
-.gitignore
-compose.yaml
-LICENCE
-proxy.yaml
-schema.pdf
-README.md
-.dockerignore
-EOF
-
-cat << EOF > .dockerignore
-
-EOF
-
-cat << EOF > .env
-MYSQL_ROOT_PASSWORD="kekpass"
-
-MYSQL_DATABASE="virtd"
-MYSQL_USER="kek"
-MYSQL_PASSWORD="kekpass"
-EOF
-
-cat << EOF > Dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY . .
-RUN pip install --no-cache-dir -r requirements.txt
-CMD [ "python", "main.py"]
-EOF
-
-cat << EOF > compose.yaml
-version: "3"
-include:
-  - proxy.yaml
-services:
-  db:
-    image: mysql:8
-    restart: always
-    networks:
-      backend:
-        ipv4_address: 172.20.0.10
-    env_file:
-      - .env
-    volumes:
-      - ./data:/var/lib/mysql
-
-  web:
-    depends_on: ["db"]
-    build: .
-    restart: always
-    networks:
-      backend:
-        ipv4_address: 172.20.0.5
-    environment:
-      - DB_HOST=172.20.0.10
-      - DB_USER=kek
-      - DB_PASSWORD=kekpass
-      - DB_NAME=virtd
-EOF
-
-docker compose up -d
+git clone https://github.com/dariatsv/shvirtd-example-python.git
+cd shvirtd-example-python && docker compose up -d
+docker compose ps -a
 
 ```
 ```log

@@ -46,13 +46,14 @@
     ```
 3. Продемонстрировать количество подов до и после масштабирования.
 4. Создать Service, который обеспечит доступ до реплик приложений из п.1.
-    [service.yaml](file/service.yaml)
-    ```text
-  dasha21a@compute-vm-2-2-20-hdd-1731398635649:~$ microk8s kubectl get service
-    NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-    kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP   76m
-    nginx-svc    ClusterIP   10.152.183.190   <none>        80/TCP    7s
-    ```
+       [service.yaml](file/service.yaml)
+
+       ```text
+               dasha21a@compute-vm-2-2-20-hdd-1731398635649:~$ microk8s kubectl get service
+       NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+       kubernetes   ClusterIP   10.152.183.1     <none>        443/TCP   76m
+       nginx-svc    ClusterIP   10.152.183.190   <none>        80/TCP    7s
+       ```
 5. Создать отдельный Pod с приложением multitool и убедиться с помощью `curl`, что из пода есть доступ до приложений из п.1.
     
    ```text

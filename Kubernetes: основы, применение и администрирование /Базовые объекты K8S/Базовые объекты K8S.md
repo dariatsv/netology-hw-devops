@@ -86,42 +86,6 @@ Request Body:
 	-no body in request-
 ```
 
-Скришот вывода:
-![](img/2.png)
-
-```text
-Hostname: netology-web-pod
-
-Pod Information:
-	-no pod information available-
-
-Server values:
-	server_version=nginx: 1.12.2 - lua: 10010
-
-Request Information:
-	client_address=127.0.0.1
-	method=GET
-	real path=/
-	query=
-	request_version=1.1
-	request_scheme=http
-	request_uri=http://89.169.160.188:8080/
-
-Request Headers:
-	accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7  
-	accept-encoding=gzip, deflate  
-	accept-language=ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7  
-	cache-control=max-age=0  
-	connection=keep-alive  
-	cookie=authMode=token; username=default  
-	host=89.169.160.188:8080  
-	upgrade-insecure-requests=1  
-	user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36  
-
-Request Body:
-	-no body in request-
-
-```
 ------
 
 ### Задание 2. Создать Service и подключить его к Pod
@@ -160,7 +124,42 @@ Handling connection for 8080
 Handling connection for 8080
 ```
 
+Скришот вывода:
+![](img/2.png)
 
+```text
+Hostname: netology-web-pod
+
+Pod Information:
+	-no pod information available-
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=127.0.0.1
+	method=GET
+	real path=/
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://89.169.160.188:8080/
+
+Request Headers:
+	accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7  
+	accept-encoding=gzip, deflate  
+	accept-language=ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7  
+	cache-control=max-age=0  
+	connection=keep-alive  
+	cookie=authMode=token; username=default  
+	host=89.169.160.188:8080  
+	upgrade-insecure-requests=1  
+	user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36  
+
+Request Body:
+	-no body in request-
+
+```
 ------
 
 ### Правила приёма работы

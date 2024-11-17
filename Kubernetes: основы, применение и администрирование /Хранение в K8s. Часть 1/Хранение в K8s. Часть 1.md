@@ -59,6 +59,8 @@ sharedvolume-7b95767db5-54jzk                2/2     Running   0             2m1
 3. Продемонстрировать возможность чтения файла изнутри пода.
 4. Предоставить манифесты Deployment, а также скриншоты или вывод команды из п. 2.
 
+[daemonset](file/daemonset.yaml)
+
 ```text
 dasha21a@compute-vm-2-2-20-hdd-1731856835289:~$ microk8s kubectl get po
 NAME                                         READY   STATUS    RESTARTS      AGE

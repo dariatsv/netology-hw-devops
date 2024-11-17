@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sharedvolume
+spec:
+  selector:
+    matchLabels:
+      app: sharedvolume
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sharedvolume
+    spec:
+      containers:
+        - name: busybox
+          image: busybox:latest
+          command: ['sh', '-c', 'mkdir -p /sharedvolume && while true; do echo "hello world! - $(date)" >> /sharedvolume/success.txt; sleep 5; done']
+          volumeMounts:
+            - name: volume
+              mountPath: /sharedvolume
+        - name: multitool
+          image: wbitt/network-multitool
+          command: ['sh', '-c', 'tail -f /sharedvolume/success.txt']
+          volumeMounts:
+            - name: volume
+              mountPath: /sharedvolume
+      volumes:
+        - name: volume
+          emptyDir: {}
